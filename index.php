@@ -241,7 +241,9 @@ if ($s3->putObjectFile($fileTempName, "openshift-objstore-demo", $fileName, S3::
   <input name="theFile" type="file" />
   <input name="Submit" type="submit" value="Upload">
 </form>
-
+<br>
+<p>Uploaded Files</p>
+<ul>
 <?php
 // Get the contents of our bucket
 $bucket_contents = $s3->getBucket("openshift-objstore-demo");
@@ -252,9 +254,10 @@ foreach ($bucket_contents as $file){
     $furl = "http://openshift-objstore-demo.s3.amazonaws.com/".$fname;
      
     //output a link to the file
-    echo "<a href=\"$furl\">$fname</a><br />";
+    echo "<li><a href=\"$furl\">$fname</a></li>";
 }
 ?>
+</ul>
 
 <!-- END CUSTOMIZATION -->
 
