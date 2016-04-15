@@ -208,8 +208,8 @@ line-height: 1.4;
 if (!class_exists('S3'))require_once('S3.php');
  
 //AWS access info
-if (!defined('awsAccessKey')) define('awsAccessKey', getenv('AWS_ACCESS_KEY'));
-if (!defined('awsSecretKey')) define('awsSecretKey', getenv('AWS_SECRET_KEY'));
+if (!defined('awsAccessKey')) define('awsAccessKey', file_get_contents('/etc/secret/aws-access-key'));
+if (!defined('awsSecretKey')) define('awsSecretKey', file_get_contents('/etc/secret/aws-secret-key'));
  
 //instantiate the class
 $s3 = new S3(awsAccessKey, awsSecretKey);
