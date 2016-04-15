@@ -226,7 +226,7 @@ $s3->putBucket("openshift-objstore-demo", S3::ACL_PUBLIC_READ);
  
 //move the file
 if ($s3->putObjectFile($fileTempName, "openshift-objstore-demo", $fileName, S3::ACL_PUBLIC_READ)) {
-    echo "<h3><font color="red">We successfully uploaded your file!</font></h3>";
+    echo "<h3>We successfully uploaded your file!</h3>";
 }else{
     echo "<h3>Something went wrong while uploading your file... sorry.</h3>";
 }
