@@ -254,7 +254,7 @@ $bucket_contents = $s3->getBucket($bucketname);
 foreach ($bucket_contents as $file){
  
     $fname = $file['name'];
-    $furl = "http://".$bucketname".s3.amazonaws.com/".$fname;
+    $furl = "http://".$bucketname.".s3.amazonaws.com/".$fname;
      
     //output a link to the file
     echo "<li><a href=\"$furl\">$fname</a></li>";
