@@ -1886,7 +1886,7 @@ final class S3Request
 	 * AWS URI
 	 *
 	 * @var string
-	 * @access pricate
+	 * @access private
 	 */
 	private $endpoint;
 	
@@ -2345,6 +2345,3 @@ class S3Exception extends Exception {
 		$this->line = $line;
 	}
 }
-/**
-* -30-
-*/
