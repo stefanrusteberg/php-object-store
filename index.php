@@ -214,6 +214,9 @@ if (!defined('awsSecretKey')) define('awsSecretKey', file_get_contents('/etc/sec
 //instantiate the class
 $s3 = new S3(awsAccessKey, awsSecretKey);
 
+// Set the bucket name
+$bucketname = getenv("S3_STORAGE_BUCKET");
+
 //check whether a form was submitted
 if(isset($_POST['Submit'])){
  
@@ -222,10 +225,10 @@ if(isset($_POST['Submit'])){
     $fileTempName = $_FILES['theFile']['tmp_name'];
      
 //create a new bucket
-$s3->putBucket("openshift-objstore-demo", S3::ACL_PUBLIC_READ);
+$s3->putBucket($bucketname, S3::ACL_PUBLIC_READ);
  
 //move the file
-if ($s3->putObjectFile($fileTempName, "openshift-objstore-demo", $fileName, S3::ACL_PUBLIC_READ)) {
+if ($s3->putObjectFile($fileTempName, $bucketname, $fileName, S3::ACL_PUBLIC_READ)) {
     echo "<h3>We successfully uploaded your file!</h3>";
 }else{
     echo "<h3>Something went wrong while uploading your file... sorry.</h3>";
@@ -246,12 +249,12 @@ if ($s3->putObjectFile($fileTempName, "openshift-objstore-demo", $fileName, S3::
 <ul>
 <?php
 // Get the contents of our bucket
-$bucket_contents = $s3->getBucket("openshift-objstore-demo");
+$bucket_contents = $s3->getBucket($bucketname);
  
 foreach ($bucket_contents as $file){
  
     $fname = $file['name'];
-    $furl = "http://openshift-objstore-demo.s3.amazonaws.com/".$fname;
+    $furl = "http://".$bucketname".s3.amazonaws.com/".$fname;
      
     //output a link to the file
     echo "<li><a href=\"$furl\">$fname</a></li>";

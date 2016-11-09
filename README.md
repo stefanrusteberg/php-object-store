@@ -33,6 +33,11 @@ Expose the route (if it isn't already)
 user@host$ oc expose svc/uploader
 ```
 
+Set the Environment variable for your bucketname (triggers a new deployment)
+```
+user@host$ oc env dc/uploader S3_STORAGE_BUCKET=openshift-objstore-demo
+```
+
 Scale up as you wish
 ```
 user@host$ oc scale --replicas=3 dc/uploader
