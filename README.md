@@ -1,4 +1,4 @@
-# Object Storage With OpenShift
+# S3 Object Storage With OpenShift
 
 This is an sample PHP application that uses S3 for storage backend. You will need your `AWS_ACCESS_KEY_ID` and your `AWS_SECRET_ACCESS_KEY` from your AWS account.
 
