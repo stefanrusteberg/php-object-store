@@ -56,7 +56,7 @@ class S3
 	 * @acess public
 	 * @static
 	 */
-	public static $endpoint = 's3.amazonaws.com';
+	public static $endpoint = 'hcp-mchba.hca.siemens.de';
 
 	/**
 	 * Proxy information
@@ -165,7 +165,7 @@ class S3
 	* @param string $endpoint Amazon URI
 	* @return void
 	*/
-	public function __construct($accessKey = null, $secretKey = null, $useSSL = false, $endpoint = 's3.amazonaws.com')
+	public function __construct($accessKey = null, $secretKey = null, $useSSL = false, $endpoint = 'hcp-mchba.hca.siemens.de')
 	{
 		if ($accessKey !== null && $secretKey !== null)
 			self::setAuth($accessKey, $secretKey);
@@ -1147,7 +1147,7 @@ class S3
 		$expires = self::__getTime() + $lifetime;
 		$uri = str_replace(array('%2F', '%2B'), array('/', '+'), rawurlencode($uri));
 		return sprintf(($https ? 'https' : 'http').'://%s/%s?AWSAccessKeyId=%s&Expires=%u&Signature=%s',
-		// $hostBucket ? $bucket : $bucket.'.s3.amazonaws.com', $uri, self::$__accessKey, $expires,
+		// $hostBucket ? $bucket : $bucket.'.hcp-mchba.hca.siemens.de', $uri, self::$__accessKey, $expires,
 		$hostBucket ? $bucket : self::$endpoint.'/'.$bucket, $uri, self::$__accessKey, $expires,
 		urlencode(self::__getHash("GET\n\n\n{$expires}\n/{$bucket}/{$uri}")));
 	}
@@ -1990,7 +1990,7 @@ final class S3Request
 	* @param string $endpoint AWS endpoint URI
 	* @return mixed
 	*/
-	function __construct($verb, $bucket = '', $uri = '', $endpoint = 's3.amazonaws.com')
+	function __construct($verb, $bucket = '', $uri = '', $endpoint = 'hcp-mchba.hca.siemens.de')
 	{
 		
 		$this->endpoint = $endpoint;
