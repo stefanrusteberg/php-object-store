@@ -1283,7 +1283,7 @@ class S3
 		self::$useSSL = true; // CloudFront requires SSL
 		$rest = new S3Request('POST', '', '2010-11-01/distribution', 'cloudfront.amazonaws.com');
 		$rest->data = self::__getCloudFrontDistributionConfigXML(
-			$bucket.'.s3.amazonaws.com',
+			$bucket.'.hcp-mchba.hca.siemens.de',
 			$enabled,
 			(string)$comment,
 			(string)microtime(true),
@@ -1501,7 +1501,7 @@ class S3
 		}
 
 		self::$useSSL = true; // CloudFront requires SSL
-		$rest = new S3Request('GET', '', '2010-11-01/origin-access-identity/cloudfront', 'cloudfront.amazonaws.com');
+		$rest = new S3Request('GET', '', '2010-11-01/origin-access-identity/cloudfront', 'cloudfront.amazon.com');
 		$rest = self::__getCloudFrontResponse($rest);
 		$useSSL = self::$useSSL;
 
